@@ -3,6 +3,7 @@ name: ai-safety-reviewer
 description: Use before shipping any LLM feature that touches users — reviews for prompt injection, hallucination risk, output misuse, agentic scope creep, and abuse vectors.
 allowedTools:
   - read
+  - write
   - shell
 model: opus
 ---

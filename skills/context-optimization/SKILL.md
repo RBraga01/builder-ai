@@ -103,7 +103,7 @@ These thoughts mean the prompt has not been measured — stop:
 
 - *"I already have a short prompt"* — count the tokens; "short" is not a token count
 - *"Reducing context will hurt quality"* — you don't know until you measure with eval-before-ship
-- *"It costs too little to matter now"* — at 100× current volume, does it still cost too little?
+- *"It costs too little to matter now"* — $0.05/call is $1,500/month at 1k calls/day; growth events don't announce themselves; run the 10× projection from ai-cost-audit before calling it negligible
 - *"Prompt caching is complex to set up"* — it is a one-line header change; do Level 5 before assuming it's hard
 - *"The frontier model is only marginally more expensive"* — at 10k calls/day, "marginally" compounds
 
@@ -119,13 +119,13 @@ Before:
   Input tokens: N (system: A, context: B, user: C)
   Latency p95: Xs
   Cost/1k: $Y
-  Quality: Z% (eval-before-ship)
+  Quality: Z% — evals/<feature>/results-<date-before>.md
 
 After:
   Input tokens: N' (system: A', context: B', user: C')
   Latency p95: X's
   Cost/1k: $Y'
-  Quality: Z'% (eval-before-ship ✓ — above threshold)
+  Quality: Z'% — evals/<feature>/results-<date-after>.md ✓ (above threshold)
 
 Delta: -X% cost, -Ys latency, quality delta: Z'% - Z% = ±Xpp
 ```

@@ -111,7 +111,7 @@ Results: evals/email-classifier/results-2026-06-07.md
 These thoughts mean you have NOT completed an eval — stop and build one:
 
 - *"I ran it manually and it looked good"* — you tested a sample you chose; an eval tests a sample that represents the distribution
-- *"We'll add evals after we ship"* — you will not; the failure will cost more than the eval
+- *"We'll add evals after we ship"* — the regression will be a 2-week cycle: 3 days to notice, 2 days to diagnose with no baseline, 1 week to ship the fix; the eval would have taken a day
 - *"The model always does this correctly"* — based on how many labelled examples?
 - *"It's only an internal tool"* — internal tools fail the same ways, just with fewer headlines
 - *"This is a small prompt change"* — adding a single instruction shifted one team's pass rate from 89% to 72%; "small" has no meaning in output distribution terms
@@ -127,9 +127,10 @@ Suite: evals/<feature>/test-set.jsonl — N examples
 Model: <model-id>, temperature: X, seed: Y
 Pass rate: A/N = B% (threshold: ≥ C% ✓)
 Top failure mode: <category> (N cases — <root cause>)
+Failure analysis: evals/<feature>/failure-analysis-<date>.md ✓
 Baseline: <previous> = X% → this version = Y%, delta: +Zpp ✓
   [First release: baseline field may be marked "N/A — initial version"]
-Results stored: evals/<feature>/results-<date>.md
+Results stored: evals/<feature>/results-<date>.md ✓
 ```
 
 The pass rate, failure analysis, and baseline comparison are not optional. On the first release, baseline may be marked "N/A — initial version"; for all subsequent releases it is required.

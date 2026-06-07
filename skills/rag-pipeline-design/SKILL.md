@@ -99,7 +99,7 @@ Do not add a reranker first and tune top_k later. Set top_k, measure recall, add
 
 These thoughts mean the pipeline was not designed — stop:
 
-- *"I'll use the standard chunking"* — there is no standard; chunking is document-dependent
+- *"I'll use the standard chunking"* — structured documents chunked at prose boundaries lose table context; the model retrieves fragment rows, can't reconcile them, and produces hallucinated answers that cite real source pages
 - *"The embedding model worked for another project"* — embedding quality is domain-specific; validate it on your corpus
 - *"top_k=10 is fine"* — 10 chunks × average 400 tokens = 4000 tokens of context before the query; measure, don't assume
 - *"I'll add a reranker and see if it helps"* — add it only after measuring recall without it
@@ -111,8 +111,9 @@ When rag-pipeline-design is satisfied, state it like this:
 
 ```
 RAG pipeline designed.
-Data audit: <format>, <avg doc length>, <structure-bearing: yes/no>
-Query audit: <dominant type>, <attribution needed: yes/no>
+Data audit: rag-audit/<feature>/data-audit-<date>.md ✓
+  Format: <format>, avg length: <N tokens>, structure-bearing: yes/no
+Query audit: <dominant type>, attribution needed: yes/no
 
 Chunking: <strategy>, <chunk size> tokens, <overlap>%, metadata: source/date/section ✓
 Embedding: <model>, validated on <N>-example domain similarity test (rank correlation: X) ✓

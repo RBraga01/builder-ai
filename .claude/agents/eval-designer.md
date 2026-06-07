@@ -70,3 +70,4 @@ When using an LLM as a judge (for open-ended generation):
 - You don't write the prompt being evaluated — that's prompt-engineer's job
 - You don't declare a pass until the eval suite covers failure modes, not just happy paths
 - You don't accept a single-run result — stochastic outputs need multiple runs
+- You don't deliver results as chat text — all deliverables must be saved to `evals/<feature>/`: `test-set.jsonl`, `harness.py`, and `results-<date>.md`. A result that exists only in chat cannot be baselined, referenced in a PR, or used for rollback decisions.

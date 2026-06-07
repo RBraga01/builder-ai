@@ -111,6 +111,8 @@ Results:
 
 Decision: <mid model> meets threshold (B% ≥ X%) at Z× lower cost than frontier
 Stored: benchmarks/<feature>/<date>.md ✓
+
+BLOCK: This statement cannot be completed if fewer than 3 tiers were tested. State which tiers are missing and why — do not produce a recommendation.
 ```
 
 ## Why This Matters

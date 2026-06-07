@@ -59,7 +59,7 @@ async def call_llm(prompt: str) -> Result:
                 prompt, timeout=TIMEOUT_SECONDS
             )
             parsed = parse_and_validate(response)   # raises OutputParseError on bad schema
-            if parsed.confidence < CONFIDENCE_THRESHOLD:
+            if parsed.confidence < CONFIDENCE_THRESHOLD:  # default 0.7; use 0.85 for high-stakes domains
                 log_fallback("low_confidence", attempt)
                 return fallback_result(reason="low_confidence")
             return parsed
@@ -116,7 +116,7 @@ When fallback-required is satisfied, state it like this:
 Fallbacks implemented.
 Timeout/API error: retry (max N, backoff Xs–Ys), then fallback_result("timeout") ✓
 Malformed output: schema validation → fallback_result("malformed_output") ✓
-Low confidence: threshold = X → fallback_result("low_confidence") ✓
+Low confidence: threshold = X (default 0.7; 0.85 for medical/legal/financial) → fallback_result("low_confidence") ✓
 Refusal: refusal pattern detection → fallback_result("refused") ✓
 Tests: 4 failure-mode tests passing ✓
 Fallback logging: reason field → <log destination> ✓

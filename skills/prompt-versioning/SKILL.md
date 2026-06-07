@@ -85,7 +85,7 @@ Fill in the frontmatter completely. Writing the metadata first makes the constra
 
 ### Step 2 — Write the Prompt in the File
 
-Write the prompt in the versioned file — not in a scratch pad, not in the chat, not inline in the codebase as a string. The file IS the source of truth.
+Write the prompt in the versioned file — not in a scratch pad, not in the chat, not inline in the codebase as a string. The file IS the source of truth. If the codebase contains the prompt text as a string, the prompt is not versioned. The code must reference `prompts/<feature>/v<x.y.z>.md` as a file path — not copy its content inline. Inline prompts cannot be rolled back in 30 seconds; they require a code deploy.
 
 ### Step 3 — Update CHANGELOG.md
 

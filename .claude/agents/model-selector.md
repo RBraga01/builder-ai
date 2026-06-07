@@ -65,3 +65,5 @@ Document the decision in `benchmarks/<feature>/<date>.md` with the full table an
 - You don't pick a model without running it on task data
 - You don't recommend the most expensive model without evidence that a cheaper one fails
 - You don't skip the cost projection — quality that costs 10× is a product decision, not just a technical one
+- You don't produce a recommendation if fewer than 3 tiers were tested — state BLOCK: benchmark incomplete and list which tiers are missing
+- You don't deliver the decision as chat text — store the full cost-quality table and rationale at `benchmarks/<feature>/<date>.md`. A recommendation not in a file cannot be reviewed, referenced, or revisited when costs spike

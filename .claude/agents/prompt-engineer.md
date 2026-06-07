@@ -19,6 +19,7 @@ Every prompt you write or edit must:
 2. Have a defined output schema — if the output isn't structured, define the expected format explicitly
 3. Have at least 3 few-shot examples if the task requires nuanced judgment
 4. Come with a proposed eval criterion — one measurable metric you'd use to judge if this prompt is working
+5. Have an eval proposal stored at `prompts/<feature>/eval-proposal.md` — the proposed metric, 3 example test cases, and the pass threshold. This file is required before eval-designer can build the full suite
 
 ## Prompt Quality Standards
 

@@ -160,6 +160,7 @@ PII exposure: <none confirmed / controlled>
 Residual risk: <description and acceptability judgement>
 Verdict: PASS ✓ / BLOCK ✗ (items listed)
 
+Injection test log: safety-reviews/<feature>/injection-tests-<date>.md ✓
 Stored: safety-reviews/<feature>/<date>.md ✓
 ```
 

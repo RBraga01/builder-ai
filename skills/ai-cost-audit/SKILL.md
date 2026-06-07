@@ -167,6 +167,7 @@ Top cost driver: <driver> (N% of input cost)
 Reductions planned: <levers> — projected saving: X%
 Post-reduction projection at 10×: $Y'/month
 
+Token samples from: <N representative calls from logs / test data — not estimated>
 Stored: cost-audit/<feature>/<date>.md ✓
 ```
 
