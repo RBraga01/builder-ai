@@ -23,6 +23,12 @@ Trigger when:
 - RAG pipeline is stuffing too many chunks into each call
 - Output quality is degrading on long inputs (long context dilution)
 
+## When NOT to Use
+
+- The feature has < 100 calls/month and total monthly cost is < $20 — optimisation ROI is negative at this volume
+- Quality is currently below threshold — fix quality first; optimising a broken pipeline only makes it cheaper to be wrong
+- The system prompt changes every call — prompt caching (Level 5) has no effect; skip straight to Level 1–3
+
 ## The Reduction Hierarchy
 
 Apply in order. Stop when the target is met. Do not apply all steps preemptively.

@@ -11,7 +11,8 @@ description: Use before merging, deploying, or demo'ing any LLM feature. Require
 AN LLM FEATURE IS NOT READY UNTIL NUMBERS EXIST.
 "It looked good when I tested it" is not an eval.
 "I ran a few examples and it worked" is not an eval.
-A named suite, a defined metric, a documented pass rate IS an eval.
+A named suite, a defined metric, a pass rate, a failure analysis,
+and a baseline comparison IS an eval. All five. Not four.
 ```
 
 ## When to Use
@@ -113,7 +114,7 @@ These thoughts mean you have NOT completed an eval — stop and build one:
 - *"We'll add evals after we ship"* — you will not; the failure will cost more than the eval
 - *"The model always does this correctly"* — based on how many labelled examples?
 - *"It's only an internal tool"* — internal tools fail the same ways, just with fewer headlines
-- *"This is a small prompt change"* — small prompt changes produce large output distribution shifts
+- *"This is a small prompt change"* — adding a single instruction shifted one team's pass rate from 89% to 72%; "small" has no meaning in output distribution terms
 - *"We don't have time to build a test set"* — you have time to diagnose production failures?
 
 ## Completion Statement Format
@@ -127,10 +128,11 @@ Model: <model-id>, temperature: X, seed: Y
 Pass rate: A/N = B% (threshold: ≥ C% ✓)
 Top failure mode: <category> (N cases — <root cause>)
 Baseline: <previous> = X% → this version = Y%, delta: +Zpp ✓
+  [First release: baseline field may be marked "N/A — initial version"]
 Results stored: evals/<feature>/results-<date>.md
 ```
 
-The pass rate, failure analysis, and baseline comparison are not optional fields.
+The pass rate, failure analysis, and baseline comparison are not optional. On the first release, baseline may be marked "N/A — initial version"; for all subsequent releases it is required.
 
 ## Why This Matters
 

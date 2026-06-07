@@ -22,6 +22,12 @@ Trigger when:
 - Validating that a smaller model can replace a larger one
 - Comparing providers (OpenAI, Anthropic, Mistral, local)
 
+## When NOT to Use
+
+- Initial feasibility exploration (before task definition is stable) — benchmark when you know what you're measuring
+- Model compatibility checks (does this model support tool use, JSON mode, etc.) — that's a capability query, not a benchmark
+- Leaderboard research to narrow the candidate list — that's input to Stage 3, not a substitute for it
+
 ## The Process
 
 Four stages. Do not collapse them.

@@ -101,15 +101,29 @@ Eval: evals/<feature>/results-2026-06-07.md (89% → 93%)
 
 No version goes to production without an eval run. Reference the eval in the frontmatter's `eval_suite` field.
 
+### Rollback Path
+
+If a version regresses in production, the rollback is a one-line change: point the code to the previous version file.
+
+```python
+# Before (broken)
+PROMPT_PATH = "prompts/classifier/v1.2.0.md"
+
+# After (rollback — takes 30 seconds)
+PROMPT_PATH = "prompts/classifier/v1.1.0.md"
+```
+
+This is only possible if the old version was not overwritten. Never edit in place — always create a new version file.
+
 ## Rationalization Red Flags
 
 These thoughts mean the prompt is not versioned — stop:
 
-- *"It's hardcoded in the codebase so git tracks it"* — git tracks the file, not the intent or the baseline for comparison
-- *"It's just a minor change, not worth versioning"* — minor prompt changes produce major output shifts; you won't know until the regression
-- *"I'll version it after I confirm it works"* — the working version you can't find later IS the version you needed to save
-- *"The prompt is in the config file"* — config files don't have CHANGELOG entries, version semantics, or eval links
-- *"We only have one prompt version"* — that is always true until you need to roll back
+- *"It's hardcoded in the codebase so git tracks it"* — git tracks the file's bytes, not the intent, the eval result, or what the previous version looked like for comparison; without a CHANGELOG you cannot explain the regression
+- *"It's just a minor change, not worth versioning"* — every prompt regression in production starts with "it was just a minor change"; the version is how you find which change caused it
+- *"I'll version it after I confirm it works"* — the version you can't find later is the one that was working; you needed to save it before changing it
+- *"The prompt is in the config file"* — config files don't carry CHANGELOG entries, version semantics, or eval links; they are deployment targets, not the source of truth
+- *"We only have one prompt version"* — that statement is always true until the night a regression reaches production and nobody can answer "what did the prompt look like before?"
 
 ## Completion Statement Format
 

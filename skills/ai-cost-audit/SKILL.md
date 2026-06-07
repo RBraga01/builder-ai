@@ -22,6 +22,12 @@ Trigger:
 - Before scaling a feature to a new user segment
 - Before committing to a model or provider for a high-volume use case
 
+## When NOT to Use
+
+- Internal one-off scripts or developer tools with < 50 calls/day — cost is negligible; write the call, move on
+- Features still in prototype where the call structure will change significantly before launch — audit after the design stabilises
+- When total monthly API cost is guaranteed < $50 regardless of 10× scale — skip the audit, check the bill quarterly
+
 ## The Process
 
 ### Step 1 — Count Tokens Precisely
