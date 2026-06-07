@@ -323,7 +323,7 @@ hr.sep { border:none; border-top:1px solid var(--border); }
 }
 
 /* ── ECOSYSTEM ── */
-.eco-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.eco-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px; }
 .eco-card {
   background:var(--surface); border:1px solid var(--border);
   border-radius:var(--r); padding:24px; text-decoration:none;
@@ -668,7 +668,7 @@ footer a:hover { color:var(--text); }
   <p class="section-sub">Each pack enforces one domain. All work standalone. All share the same enforcement model — Completion Statement Formats that require real values.</p>
 
   <div class="eco-grid">
-    <a class="eco-card reveal" href="https://github.com/RBraga01/a-team" target="_blank" rel="noopener">
+    <a class="eco-card reveal" href="https://rbraga01.github.io/a-team/" target="_blank" rel="noopener">
       <div class="eco-card-eyebrow">Foundation</div>
       <h3>A Team</h3>
       <p>25 pre-configured engineering specialists, a lead orchestrator, 18 workflow skills, and a Pipeline Auditor. The base layer.</p>
@@ -678,10 +678,20 @@ footer a:hover { color:var(--text); }
       <h3>builder-ai</h3>
       <p>AI engineering quality gates. Eval, prompt versioning, fallback design, RAG pipelines, safety review.</p>
     </a>
-    <a class="eco-card reveal" href="https://github.com/RBraga01/builder-design" target="_blank" rel="noopener">
+    <a class="eco-card reveal" href="https://rbraga01.github.io/builder-design/" target="_blank" rel="noopener">
       <div class="eco-card-eyebrow">Design</div>
       <h3>builder-design</h3>
       <p>AI UI design enforcement. States, streaming UI, prompt UX, accessibility, design tokens — the design layer AI features need.</p>
+    </a>
+    <a class="eco-card reveal" href="https://rbraga01.github.io/builder-product/" target="_blank" rel="noopener">
+      <div class="eco-card-eyebrow">Product</div>
+      <h3>builder-product</h3>
+      <p>Product quality gates. PRD, feature scoping, metric definition, research synthesis, A/B test design, AI feature validation.</p>
+    </a>
+    <a class="eco-card reveal" href="https://rbraga01.github.io/builder-growth/" target="_blank" rel="noopener">
+      <div class="eco-card-eyebrow">Growth</div>
+      <h3>builder-growth</h3>
+      <p>Growth quality gates. Positioning, copy, funnel analysis, experiments, retention design, AI messaging review.</p>
     </a>
   </div>
 </section>

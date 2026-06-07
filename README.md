@@ -15,7 +15,7 @@ bash <(curl -fsSL https://raw.githubusercontent.com/RBraga01/builder-ai/main/ins
 irm https://raw.githubusercontent.com/RBraga01/builder-ai/main/install.ps1 | iex
 ```
 
-Works on Claude Code, Codex CLI, Cursor, and OpenCode. Works alongside [A Team](https://github.com/RBraga01/a-team) if you already have it.
+Works on Claude Code, Codex CLI, Cursor, and OpenCode. Works alongside [A Team](https://github.com/RBraga01/a-team), [builder-design](https://github.com/RBraga01/builder-design), [builder-product](https://github.com/RBraga01/builder-product), and [builder-growth](https://github.com/RBraga01/builder-growth).
 
 ---
 
