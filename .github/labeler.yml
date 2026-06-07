@@ -1,0 +1,25 @@
+skill:
+  - changed-files:
+    - any-glob-to-any-file: 'skills/**'
+
+agent:
+  - changed-files:
+    - any-glob-to-any-file: '.claude/agents/**'
+
+infrastructure:
+  - changed-files:
+    - any-glob-to-any-file:
+      - '.github/**'
+      - 'scripts/**'
+      - 'install.sh'
+      - 'install.ps1'
+
+documentation:
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'README.md'
+      - 'CONTRIBUTING.md'
+      - 'SECURITY.md'
+      - 'AGENTS.md'
+      - 'CLAUDE.md'
+      - 'CHANGELOG.md'

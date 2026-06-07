@@ -1,41 +1,52 @@
 ---
 name: prompt-versioning
-description: Enforces that all prompts are version-controlled, named, and never modified in-place without a new version entry.
+description: Use whenever writing or modifying a prompt that will run in production. Enforces version-controlled prompts in prompts/<feature>/v<x.y.z>.md. Blocks "the prompt is in the code somewhere" completions.
 ---
 
 # Prompt Versioning
 
 ## The Law
 
-Prompts are code. They live in version control, carry a version number, and are never edited in-place without creating a new version. Unversioned prompts cannot be debugged, rolled back, or compared.
+```
+A PROMPT WITHOUT A VERSION NUMBER CANNOT BE DEBUGGED, ROLLED BACK, OR IMPROVED.
+"It's tracked in git" is not versioning — the file has no history of intent.
+"I'll version it later" means you'll debug a production regression with no baseline.
+prompts/<feature>/v<x.y.z>.md with a CHANGELOG entry IS versioning.
+```
 
 ## When to Use
 
 Trigger whenever:
 - Writing a new system prompt or user prompt template
-- Modifying an existing prompt
+- Modifying an existing prompt in any way (even a single word)
 - Switching between prompt variants in an experiment
-- Rolling back after a regression
+- Rolling back after a quality regression
+
+## When NOT to Use
+
+- One-off manual queries not used in any automated pipeline
+- Prompts that exist only in a prototype that will be discarded
 
 ## Required Structure
 
-All prompts live in `prompts/` with this layout:
-
 ```
 prompts/
-  feature-name/
-    v1.0.0.md       ← original
-    v1.1.0.md       ← iteration (changed tone, few-shots)
-    v2.0.0.md       ← breaking change (restructured output format)
-    current -> v2.0.0.md   ← symlink or reference
-    CHANGELOG.md    ← what changed and why between versions
+  <feature-name>/
+    v1.0.0.md        ← original version
+    v1.1.0.md        ← iteration (changed few-shots, added constraint)
+    v2.0.0.md        ← breaking change (new output schema)
+    CHANGELOG.md     ← what changed between versions and why
 ```
+
+The `current` version is the highest version number. Never delete old versions — they are the rollback path.
 
 ## Version Numbering
 
-- **Patch** (1.0.x): whitespace, typo, minor wording that doesn't change output distribution
-- **Minor** (1.x.0): new instructions, examples, or constraints — likely changes output
-- **Major** (x.0.0): restructured format, new output schema, different reasoning chain
+| Bump | When | Example |
+|---|---|---|
+| Patch (x.y.**Z**) | Whitespace, typo, minor wording — output distribution unchanged | "Please" → "please" |
+| Minor (x.**Y**.0) | New instruction, example, or constraint — output likely changes | Added 3 few-shot examples |
+| Major (**X**.0.0) | New output schema, restructured reasoning, different task framing | JSON → structured XML |
 
 ## Prompt File Format
 
@@ -43,10 +54,10 @@ prompts/
 ---
 version: 1.2.0
 feature: <feature-name>
-model: <model-id>
+model: claude-sonnet-4-6
 temperature: 0.3
 max_tokens: 512
-created: YYYY-MM-DD
+created: 2026-06-07
 eval_suite: evals/<feature-name>/
 ---
 
@@ -59,17 +70,60 @@ eval_suite: evals/<feature-name>/
 </user>
 ```
 
+All fields are required. `eval_suite` links to the eval that validates this version.
+
 ## The Process
 
-1. Create `prompts/<feature>/v1.0.0.md` with the frontmatter above
-2. Run eval-before-ship before any version goes to production
-3. On change: bump version, create new file, update CHANGELOG.md, update `current` reference
-4. Never delete old versions — they are the audit trail
+### Step 1 — Create the Versioned File
 
-## Verification Checklist
+Before writing the prompt text, create the file at its versioned path:
+```
+prompts/<feature>/v1.0.0.md
+```
 
-- [ ] Prompt file exists in `prompts/` with version in filename
-- [ ] Frontmatter complete (model, temperature, max_tokens, created, eval_suite)
-- [ ] `current` reference updated
-- [ ] CHANGELOG.md entry written explaining what changed and why
-- [ ] eval-before-ship triggered for this version
+Fill in the frontmatter completely. Writing the metadata first makes the constraints explicit before the prompt body.
+
+### Step 2 — Write the Prompt in the File
+
+Write the prompt in the versioned file — not in a scratch pad, not in the chat, not inline in the codebase as a string. The file IS the source of truth.
+
+### Step 3 — Update CHANGELOG.md
+
+Every version requires a CHANGELOG entry:
+```markdown
+## v1.2.0 — 2026-06-07
+Changed: Added refusal instruction for out-of-scope queries
+Why: Eval showed 8% refusal rate drop in v1.1.0 failure analysis
+Eval: evals/<feature>/results-2026-06-07.md (89% → 93%)
+```
+
+### Step 4 — Trigger eval-before-ship
+
+No version goes to production without an eval run. Reference the eval in the frontmatter's `eval_suite` field.
+
+## Rationalization Red Flags
+
+These thoughts mean the prompt is not versioned — stop:
+
+- *"It's hardcoded in the codebase so git tracks it"* — git tracks the file, not the intent or the baseline for comparison
+- *"It's just a minor change, not worth versioning"* — minor prompt changes produce major output shifts; you won't know until the regression
+- *"I'll version it after I confirm it works"* — the working version you can't find later IS the version you needed to save
+- *"The prompt is in the config file"* — config files don't have CHANGELOG entries, version semantics, or eval links
+- *"We only have one prompt version"* — that is always true until you need to roll back
+
+## Completion Statement Format
+
+When prompt-versioning is satisfied, state it like this:
+
+```
+Prompt versioned.
+File: prompts/<feature>/v<x.y.z>.md
+Frontmatter: model, temperature, max_tokens, eval_suite — all set
+CHANGELOG.md: entry written (what changed, why, eval reference)
+Previous version: v<prev> → this version: v<x.y.z>
+Eval: <pending / evals/<feature>/results-<date>.md ✓>
+```
+
+## Why This Matters
+
+Prompts are the most fragile part of an LLM system. A word change shifts the output distribution. Without versioning you cannot: compare what changed, reproduce the version that worked, run A/B tests with confidence, or diagnose a regression after it reaches users.

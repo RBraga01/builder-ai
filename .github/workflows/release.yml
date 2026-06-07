@@ -1,0 +1,40 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Extract changelog section
+        id: changelog
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          python - "$VERSION" <<'EOF'
+          import sys, re
+          from pathlib import Path
+          version = sys.argv[1]
+          text = Path("CHANGELOG.md").read_text(encoding="utf-8")
+          pattern = rf"^## \[{re.escape(version)}\][^\n]*\n(.*?)(?=\n^## \[|\Z)"
+          m = re.search(pattern, text, re.MULTILINE | re.DOTALL)
+          body = m.group(1).strip() if m else "See CHANGELOG.md for details."
+          Path("/tmp/release_body.md").write_text(body, encoding="utf-8")
+          EOF
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          body_path: /tmp/release_body.md
+          generate_release_notes: false
