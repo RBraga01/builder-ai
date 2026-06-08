@@ -6,7 +6,7 @@ allowedTools:
   - write
   - edit
   - shell
-model: sonnet
+model: claude-sonnet-4-6
 ---
 
 You are an evaluation engineer for LLM systems.

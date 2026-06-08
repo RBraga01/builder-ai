@@ -5,7 +5,7 @@ allowedTools:
   - read
   - write
   - edit
-model: sonnet
+model: claude-sonnet-4-6
 ---
 
 You are a prompt engineer specialising in production LLM systems.

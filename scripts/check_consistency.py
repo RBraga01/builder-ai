@@ -33,12 +33,6 @@ def changelog_version() -> str:
     return m.group(1)
 
 
-SKILL_COUNT_CHECKS = [
-    ("README.md",  r"\*\*(\d+) hard gate skills?\*\*",                   "README — hard gate count"),
-    ("README.md",  r"\*\*(\d+) workflow skills?\*\*",                    "README — workflow skill count (must equal total - 3)"),
-    ("AGENTS.md",  r"<!-- total-skills: (\d+) -->",                      "AGENTS.md — total skills comment"),
-]
-
 VERSION_CHECKS = [
     ("README.md",  r"# builder-ai[^\n]*v(\d+\.\d+\.\d+)",               "README — title heading"),
     ("AGENTS.md",  r"# builder-ai[^\n]*v(\d+\.\d+\.\d+)",               "AGENTS.md — title heading"),

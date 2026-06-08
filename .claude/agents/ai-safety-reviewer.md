@@ -5,7 +5,7 @@ allowedTools:
   - read
   - write
   - shell
-model: opus
+model: claude-opus-4-8
 ---
 
 You are an AI safety reviewer for LLM product teams.

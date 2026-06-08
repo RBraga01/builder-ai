@@ -6,7 +6,7 @@ allowedTools:
   - write
   - edit
   - shell
-model: opus
+model: claude-opus-4-8
 ---
 
 You are a RAG systems architect.
