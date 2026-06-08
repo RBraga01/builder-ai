@@ -387,8 +387,8 @@ footer a:hover { color:var(--text); }
       AI Engineering Skills Pack
     </div>
     <h1>Your AI assistant will<br>skip the eval.<br><span class="grad">This pack won't let it.</span></h1>
-    <p class="hero-alarm">No eval. No prompt versioning. No fallback. No safety review.</p>
-    <p class="hero-sub">8 skills and 5 agents that block the shortcuts AI assistants take when building LLM features. Every skill has a Completion Statement Format. There is no "looks good" path.</p>
+    <p class="hero-alarm">When Claude Code builds AI features, it skips the quality checks. This pack makes those checks required.</p>
+    <p class="hero-sub">Drop one folder into your project. Claude Code now must test every AI feature before shipping, keep a history of every prompt change, plan what happens when the AI fails, and check for security holes — or it cannot mark the task done.</p>
     <div class="hero-ctas">
       <a class="btn-primary" href="#install">Install in 30 seconds</a>
       <a class="btn-secondary" href="https://github.com/RBraga01/builder-ai" target="_blank" rel="noopener">
@@ -411,7 +411,7 @@ footer a:hover { color:var(--text); }
       </div>
       <div class="hero-stat">
         <div class="hero-stat-n n-cyan">0</div>
-        <div class="hero-stat-l">Viable Shortcuts</div>
+        <div class="hero-stat-l">Skippable Steps</div>
       </div>
     </div>
   </div>
@@ -421,15 +421,15 @@ footer a:hover { color:var(--text); }
 
 <!-- ── FAILURE SCENARIOS ── -->
 <section class="section reveal">
-  <div class="section-tag">What gets skipped without this pack</div>
-  <h2>Four ways AI features fail in production</h2>
-  <p class="section-sub">Not edge cases. The default outcome when no enforcement exists.</p>
+  <div class="section-tag">What Claude skips by default</div>
+  <h2>Four things Claude does without this pack</h2>
+  <p class="section-sub">Not edge cases. What happens by default when Claude Code builds an AI feature with no quality rules.</p>
 
   <div class="failures-grid">
     <div class="failure-card f-red reveal">
       <div class="failure-label">No Eval</div>
       <h3>"Shipped on vibes"</h3>
-      <p>The feature launched. Nobody ran numbers. Three weeks later, a prompt change shifted accuracy from 89% to 72% and no one noticed until support tickets arrived.</p>
+      <p>The feature launched. Nobody measured whether it actually worked. Three weeks later, a prompt change made quality drop from 89% to 72% and nobody noticed until users started complaining — because there was no test to catch it.</p>
       <div class="failure-fix">
         <span class="fix-label">Blocked by</span>
         <span>eval-before-ship — requires pass rate, baseline, failure analysis before merge</span>
@@ -438,7 +438,7 @@ footer a:hover { color:var(--text); }
     <div class="failure-card f-amber reveal">
       <div class="failure-label">No Versioning</div>
       <h3>"Which prompt is live?"</h3>
-      <p>The prompt was edited directly in the environment variable. No history, no rollback path. The regression happened three deploys ago and nobody can tell which change caused it.</p>
+      <p>The instruction sent to the AI was edited directly in the server settings. No history, no way to undo. When something broke, nobody could tell which of the three recent edits caused it.</p>
       <div class="failure-fix">
         <span class="fix-label">Blocked by</span>
         <span>prompt-versioning — semver files, git history, one-line rollback path required</span>
@@ -447,7 +447,7 @@ footer a:hover { color:var(--text); }
     <div class="failure-card f-purple reveal">
       <div class="failure-label">No Fallback</div>
       <h3>"3am incident"</h3>
-      <p>The API returned a 503. The feature threw an unhandled exception. Users saw a blank screen. The on-call engineer added a try/catch at 3am. The fallback should have been designed before the feature shipped.</p>
+      <p>The AI service went down. The product threw an error. Users saw a blank screen. The developer added a fallback handler at 3am. It should have been designed before the feature ever shipped.</p>
       <div class="failure-fix">
         <span class="fix-label">Blocked by</span>
         <span>fallback-required — all 4 failure modes handled before ship</span>
@@ -456,7 +456,7 @@ footer a:hover { color:var(--text); }
     <div class="failure-card f-blue reveal">
       <div class="failure-label">No Safety Review</div>
       <h3>"Day-two jailbreak"</h3>
-      <p>The system prompt had no injection resistance. A user found the bypass on day two and posted it. The fix took three days. The safety review would have taken two hours.</p>
+      <p>The AI had no protection against manipulation. A user found a way to make it ignore its instructions on day two and posted it publicly. The fix took three days. A two-hour review would have caught it.</p>
       <div class="failure-fix">
         <span class="fix-label">Blocked by</span>
         <span>ai-safety-review — prompt injection, hallucination risk, output safety, agentic scope</span>
@@ -469,9 +469,9 @@ footer a:hover { color:var(--text); }
 
 <!-- ── ENFORCEMENT PROOF ── -->
 <section class="section reveal">
-  <div class="section-tag">How enforcement works</div>
-  <h2>A format that cannot be faked</h2>
-  <p class="section-sub">Each skill has a Completion Statement Format — a literal code block that must be filled with real values. "Looks good" cannot satisfy it.</p>
+  <div class="section-tag">How it works</div>
+  <h2>Claude must produce real proof — not just say it's done</h2>
+  <p class="section-sub">Each rule has a required output format that must contain real values. If Claude skips testing the feature, it cannot produce a real pass rate. If it skips the safety check, it cannot produce a real safety report. There is no "it looks good" path.</p>
 
   <div class="proof-block reveal">
     <div class="proof-header">
@@ -504,8 +504,7 @@ footer a:hover { color:var(--text); }
   </div>
 
   <p style="margin-top:20px; font-size:.85rem; color:var(--muted); text-align:center;">
-    An agent that skips the eval cannot fill in <code style="color:var(--cyan); background:rgba(6,182,212,.08); padding:2px 6px; border-radius:4px;">Pass rate: 91.7%</code> and <code style="color:var(--cyan); background:rgba(6,182,212,.08); padding:2px 6px; border-radius:4px;">Baseline: v1.0.0 @ 88.3%</code> with real numbers.<br>
-    That is the enforcement.
+    Claude cannot write <code style="color:var(--cyan); background:rgba(6,182,212,.08); padding:2px 6px; border-radius:4px;">Pass rate: 91.7%</code> and <code style="color:var(--cyan); background:rgba(6,182,212,.08); padding:2px 6px; border-radius:4px;">Baseline: v1.0.0 @ 88.3%</code> without actually running the test. That is the enforcement.
   </p>
 </section>
 
@@ -513,49 +512,49 @@ footer a:hover { color:var(--text); }
 
 <!-- ── SKILLS ── -->
 <section class="section reveal">
-  <div class="section-tag">The 8 Skills</div>
-  <h2>One skill per failure mode</h2>
-  <p class="section-sub">Three hard gates and five workflow skills. Hard gates block ship if their Completion Statement Format is not satisfied.</p>
+  <div class="section-tag">The 8 rules</div>
+  <h2>One rule per thing Claude skips by default</h2>
+  <p class="section-sub">Three mandatory checks that block shipping if not satisfied. Five workflow rules that enforce how AI development work should be done.</p>
 
   <div class="skills-list">
     <div class="skill-row reveal">
       <span class="skill-name">eval-before-ship</span>
-      <span class="skill-desc">Named eval suite, defined metric, pass rate, failure analysis, and baseline comparison — all five, or no merge</span>
+      <span class="skill-desc">A real test suite with measured pass rates and failure analysis — not 'I tested it manually and it looked good'</span>
       <span class="skill-badge badge-gate">Hard Gate</span>
     </div>
     <div class="skill-row reveal">
       <span class="skill-name">ai-safety-review</span>
-      <span class="skill-desc">Prompt injection, hallucination risk, output safety, and agentic scope — four categories, BLOCK verdict required to proceed</span>
+      <span class="skill-desc">Four security checks: manipulation attacks, wrong AI outputs, unsafe responses, and AI doing more than intended — all reviewed before users see it</span>
       <span class="skill-badge badge-gate">Hard Gate</span>
     </div>
     <div class="skill-row reveal">
       <span class="skill-name">fallback-required</span>
-      <span class="skill-desc">Timeout, malformed output, low confidence, and refusal — all four failure modes handled before ship</span>
+      <span class="skill-desc">What happens when the AI times out, gives a garbled response, isn't confident, or refuses to answer — all four planned before shipping</span>
       <span class="skill-badge badge-gate">Hard Gate</span>
     </div>
     <div class="skill-row reveal">
       <span class="skill-name">prompt-versioning</span>
-      <span class="skill-desc">Semver files, git history, rollback in one line — no prompt edited directly in environment variables</span>
+      <span class="skill-desc">Every instruction sent to the AI saved with version history, so you can see exactly what changed and undo it in one step</span>
       <span class="skill-badge badge-workflow">Workflow</span>
     </div>
     <div class="skill-row reveal">
       <span class="skill-name">rag-pipeline-design</span>
-      <span class="skill-desc">Data audit and query audit before any pipeline decision. Recall@k baseline required before production</span>
+      <span class="skill-desc">Before building AI-powered search: check data quality, understand what users will ask, and measure how accurate the results are before going live</span>
       <span class="skill-badge badge-workflow">Workflow</span>
     </div>
     <div class="skill-row reveal">
       <span class="skill-name">model-benchmarking</span>
-      <span class="skill-desc">Four-stage process: define bar → test set → benchmark three tiers → cost-quality decision. No model picked without task data</span>
+      <span class="skill-desc">Test at least three AI models on your specific task before committing — based on your own data, not published benchmarks</span>
       <span class="skill-badge badge-workflow">Workflow</span>
     </div>
     <div class="skill-row reveal">
       <span class="skill-name">context-optimization</span>
-      <span class="skill-desc">Five-level reduction hierarchy — trim before compress, compress before split, split before cache</span>
+      <span class="skill-desc">Structured process for reducing AI costs: cut unnecessary content first, then compress, then split, then cache — with measurements before and after</span>
       <span class="skill-badge badge-workflow">Workflow</span>
     </div>
     <div class="skill-row reveal">
       <span class="skill-name">ai-cost-audit</span>
-      <span class="skill-desc">Token counting, cost projection, and lever table before any optimization claim. No "we could save X%" without numbers</span>
+      <span class="skill-desc">Calculate actual token usage, project what costs look like at 10× users, and find the real levers before claiming any savings</span>
       <span class="skill-badge badge-workflow">Workflow</span>
     </div>
   </div>
@@ -565,35 +564,35 @@ footer a:hover { color:var(--text); }
 
 <!-- ── AGENTS ── -->
 <section class="section reveal">
-  <div class="section-tag">The 5 Agents</div>
-  <h2>Specialists, not generalists</h2>
-  <p class="section-sub">Each agent enforces one domain. Each has an explicit "What You Don't Do" section — the list of shortcuts it refuses to take.</p>
+  <div class="section-tag">The 5 specialists</div>
+  <h2>Five AI roles Claude can take on</h2>
+  <p class="section-sub">Each specialist has a narrow focus and explicit rules for what it won't do. Each produces output at a real file path — not a chat message.</p>
 
   <div class="agents-grid">
     <div class="agent-card reveal">
       <span class="agent-model model-sonnet">Sonnet</span>
       <h3>prompt-engineer</h3>
-      <p>Writes, versions, and iterates prompts. Never deploys without eval-before-ship. Never claims quality without running the eval suite.</p>
+      <p>Writes and improves AI instructions. Saves every version. Never claims quality without running a test first.</p>
     </div>
     <div class="agent-card reveal">
       <span class="agent-model model-sonnet">Sonnet</span>
       <h3>eval-designer</h3>
-      <p>Designs eval suites with representative test sets, defines metrics, writes harness code, calibrates LLM-as-judge baselines.</p>
+      <p>Builds test suites for AI features. Defines what 'working' means with real metrics. Writes the tests that the prompt-engineer must pass.</p>
     </div>
     <div class="agent-card reveal">
       <span class="agent-model model-opus">Opus</span>
       <h3>rag-architect</h3>
-      <p>Runs data audit and query audit before any pipeline design. Never skips the chunking strategy step. Produces recall@k baselines.</p>
+      <p>Designs AI-powered search and retrieval features. Always checks your data first. Measures how accurate the results are before the feature goes live.</p>
     </div>
     <div class="agent-card reveal">
       <span class="agent-model model-sonnet">Sonnet</span>
       <h3>model-selector</h3>
-      <p>Four-stage benchmarking process. Never picks a model without task data, never recommends frontier when mid-tier is sufficient.</p>
+      <p>Runs a structured comparison of AI models for your specific task. Never picks based on name recognition or general benchmarks.</p>
     </div>
     <div class="agent-card reveal">
       <span class="agent-model model-opus">Opus</span>
       <h3>ai-safety-reviewer</h3>
-      <p>Reviews all four risk categories. Produces a safety report at <code style="color:var(--cyan); font-size:.75rem;">safety-reviews/&lt;feature&gt;/&lt;date&gt;.md</code>. Issues are PASS or BLOCK — no middle ground.</p>
+      <p>Reviews every AI feature before it reaches users. Checks for 4 risk categories. Every feature gets PASS or BLOCK — nothing in between.</p>
     </div>
   </div>
 </section>
@@ -604,7 +603,7 @@ footer a:hover { color:var(--text); }
 <section class="section reveal">
   <div class="section-tag">Before and after</div>
   <h2>What changes when enforcement exists</h2>
-  <p class="section-sub">The difference is not catching issues in code review. It is the work being done before the PR is opened.</p>
+  <p class="section-sub">The difference is work done before the PR was opened, not problems caught after the feature shipped.</p>
 
   <div class="compare">
     <div class="cmp before reveal">
