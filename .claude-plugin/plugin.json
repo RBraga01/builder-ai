@@ -1,0 +1,21 @@
+{
+  "name": "builder-ai",
+  "description": "AI product quality enforcement: 8 skills and 5 agents for LLM product teams",
+  "version": "1.0.0",
+  "author": {
+    "name": "RBraga01",
+    "url": "https://github.com/RBraga01"
+  },
+  "homepage": "https://github.com/RBraga01/builder-ai",
+  "repository": "https://github.com/RBraga01/builder-ai",
+  "license": "MIT",
+  "keywords": [
+    "ai-product",
+    "eval",
+    "safety",
+    "rag",
+    "llm",
+    "claude-code",
+    "builder"
+  ]
+}
