@@ -1,0 +1,45 @@
+{
+  "name": "builder-ai",
+  "version": "1.0.0",
+  "description": "AI product quality enforcement: 8 skills and 5 agents that enforce quality in AI-assisted product development. Covers eval design, safety review, cost audit, RAG pipeline design, prompt versioning, and model benchmarking.",
+  "author": {
+    "name": "RBraga01",
+    "url": "https://github.com/RBraga01"
+  },
+  "homepage": "https://github.com/RBraga01/builder-ai",
+  "repository": "https://github.com/RBraga01/builder-ai",
+  "license": "MIT",
+  "websiteURL": "https://github.com/RBraga01/builder-ai",
+  "privacyPolicyURL": "https://github.com/RBraga01/builder-ai/blob/main/SECURITY.md",
+  "termsOfServiceURL": "https://github.com/RBraga01/builder-ai/blob/main/LICENSE",
+  "keywords": [
+    "ai-product",
+    "eval",
+    "safety",
+    "rag",
+    "llm",
+    "codex",
+    "builder"
+  ],
+  "interface": {
+    "displayName": "Builder: AI",
+    "shortDescription": "8 skills and 5 agents for LLM product teams.",
+    "longDescription": "AI product quality enforcement: 8 skills and 5 agents that enforce quality in AI-assisted product development. Covers eval design, safety review, cost audit, RAG pipeline design, prompt versioning, and model benchmarking.",
+    "developerName": "RBraga01",
+    "category": "Coding",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Run /eval-before-ship to check AI feature readiness.",
+      "Use ai-safety-review to audit recent AI code changes."
+    ],
+    "websiteURL": "https://github.com/RBraga01/builder-ai",
+    "privacyPolicyURL": "https://github.com/RBraga01/builder-ai/blob/main/SECURITY.md",
+    "termsOfServiceURL": "https://github.com/RBraga01/builder-ai/blob/main/LICENSE",
+    "brandColor": "#6366f1",
+    "screenshots": []
+  }
+}
